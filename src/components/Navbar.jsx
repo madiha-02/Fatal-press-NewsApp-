@@ -1,6 +1,4 @@
-import React from 'react'
-
- const Navbar=()=>{
+const Navbar = () => {
     return (
       <div>
         <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark ">
