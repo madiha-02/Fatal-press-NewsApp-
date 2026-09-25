@@ -40,22 +40,22 @@ const News=(props)=> {
   
     return (
       <>
-        <h1 className='text-center' style={{marginTop:'90px'}}>Fatal Press- Top {props.category} Headlines.</h1>
-         {loading &&<Spinner/>}  
+        <h1 className='page-heading'>Fatal Press- Top {props.category} Headlines.</h1>
+         {loading &&<Spinner/>}
         <InfiniteScroll
           dataLength={article.length}
           next={fetchMoreData}
           hasMore={article.length !== totalResults}
-          loader={loading &&<Spinner/>}
+          loader={<Spinner/>}
         >
-        <div className='container'>
-        <div className='row'>
+        <div className='container news-grid'>
+        <div className='row g-4'>
         { article.map((element)=>{
-            return <div className='col-md-4' key={element.url}>
+            return <div className='col-md-4 col-sm-6 d-flex' key={element.url}>
             <NewsItem tittle={element.title?element.title:""} description={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
           </div>
         })}
-         </div>  
+         </div>
         </div>
         </InfiniteScroll>
       

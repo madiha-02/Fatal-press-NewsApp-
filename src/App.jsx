@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Navbar from './components/Navbar'
 import LoadingBar from 'react-top-loading-bar'
 import News from './components/News'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 
 const App = () => {
   const apiKey = import.meta.env.VITE_NEWS_API
@@ -13,6 +13,7 @@ const App = () => {
         <Navbar />
         <LoadingBar color='#f11946' height={3} progress={progress} />
         <Routes>
+          <Route path='/' element={<Navigate to='/home' replace />}></Route>
           <Route path='/home' element={<News setProgress={setProgress} apiKey={apiKey} pageSize={9} country='us' category='General' />}></Route>
           <Route path='/business' element={<News setProgress={setProgress} apiKey={apiKey} pageSize={9} country='us' category='Business' />}></Route>
           <Route path='/entertainment' element={<News setProgress={setProgress} apiKey={apiKey} pageSize={9} country='us' category='Entertainment' />}></Route>
